@@ -18,7 +18,7 @@ steps:
   - deploy
   - --quiet
   - app.yaml
-  - --image-url=gcr.io/$PROJECT_ID/[TAG]
+  - --image-url=gcr.io/$PROJECT_ID/tomaskracka/flask
   id: 'flask'
 
 - name: 'gcr.io/cloud-builders/docker'
