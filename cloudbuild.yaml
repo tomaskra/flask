@@ -1,15 +1,15 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/[TAG]', '.']
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/tomaskracka/flask', '.']
   id: 'docker-image-build-for-gcr'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/[TAG]']
+  args: ['push', 'gcr.io/$PROJECT_ID/tomaskracka/flask']
   id: 'docker-image-push-gcr'
   waitFor: ['docker-image-build-for-gcr']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', '[TAG]', '.']
+  args: ['build', '-t', 'tomaskracka/flask', '.']
   id: 'docker-image-build-for-dockerhub'
 
 - name: 'gcr.io/cloud-builders/gcloud'
@@ -33,6 +33,6 @@ steps:
   waitFor: ['docker-login', 'docker-image-build-for-dockerhub']
 
 secrets:
-- kmsKeyName: projects/[PROJECT-ID]/locations/global/keyRings/[KEY-RING]/cryptoKeys/[KEY]
+- kmsKeyName: projects/[PROJECT-ID]/locations/global/keyRings/dockerhub/cryptoKeys/hub
   secretEnv:
     PASSWORD: CiQAjxv7u7VND5v8RCJk7qw5r57jxa/GB2RD+VpWhHaouYXpOnESNgC0Rr7ywXvNQYPp6H3H+jlCiFILfBgDLVh2c+hsojMnmVAvXzh1rfONlXn1hKLKG0AbEu97ew==
