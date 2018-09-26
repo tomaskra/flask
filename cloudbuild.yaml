@@ -33,6 +33,6 @@ steps:
   waitFor: ['docker-login', 'docker-image-build-for-dockerhub']
 
 secrets:
-- kmsKeyName: projects/[PROJECT-ID]/locations/global/keyRings/dockerhub/cryptoKeys/hub
+- kmsKeyName: projects/kracka-216804/locations/global/keyRings/dockerhub/cryptoKeys/hub
   secretEnv:
     PASSWORD: CiQAjxv7u7VND5v8RCJk7qw5r57jxa/GB2RD+VpWhHaouYXpOnESNgC0Rr7ywXvNQYPp6H3H+jlCiFILfBgDLVh2c+hsojMnmVAvXzh1rfONlXn1hKLKG0AbEu97ew==
